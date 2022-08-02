@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "PORT=$WEB_PORT next dev",
+    "dev": "next dev -p $WEB_PORT",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
