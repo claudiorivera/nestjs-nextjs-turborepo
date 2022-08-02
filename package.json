@@ -11,8 +11,8 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "start:api": "turbo run start --filter=api",
-    "start:web": "turbo run start --filter=web"
+    "start:api": "cd apps/api && yarn start",
+    "start:web": "cd apps/web && yarn start"
   },
   "devDependencies": {
     "eslint-config-custom": "*",
