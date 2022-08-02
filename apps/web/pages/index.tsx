@@ -1,18 +1,31 @@
 import useSWR from "swr";
-import { Button } from "ui";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function Web() {
-  const { data, error } = useSWR("/api/todos", fetcher);
+  const { data, error, mutate } = useSWR("/api/todos", fetcher);
   const isLoading = !error && !data;
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Oops...</p>;
 
+  const handlePostNewTodo = async () => {
+    await fetch("/api/todos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: `New todo ${Math.random()}` }),
+    });
+  };
   return (
     <div>
-      <Button />
+      <button
+        onClick={() => {
+          handlePostNewTodo();
+          mutate();
+        }}
+      >
+        Create new random todo
+      </button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
