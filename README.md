@@ -1,21 +1,14 @@
 # NestJS/Next.js Turborepo
 
-This is a monorepo with a NestJS API and a Next.js frontend, deployed to Railway.
-
-## Prerequisites
-
-- A Railway account with access to the `nestjs-nextjs-turborepo` project
-- [Railway CLI](https://docs.railway.app/develop/cli)
+This is a monorepo with a NestJS API and a Next.js frontend.
 
 ## Setup
 
 - `yarn` to install dependencies
-- `railway login`
-- `railway link` and select the `nestjs-nextjs-turborepo` project
-- `railway run yarn prisma:migrate:dev`
-  - Select the `env-vars` service
+- Create a local Postgres database (ie. `createdb nestjs-nextjs-turborepo`)
+- Inject `cp .env.example .env` and update values, if necessary
+- `yarn prisma:migrate:dev`
 
 ## Develop
 
-- `railway run yarn dev`
-  - Select the `env-vars` service
+- `yarn dev`
