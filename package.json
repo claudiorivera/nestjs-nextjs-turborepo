@@ -10,7 +10,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "start:api": "cd apps/api && yarn start",
+    "start:web": "cd apps/web && yarn start"
   },
   "devDependencies": {
     "eslint-config-custom": "*",
