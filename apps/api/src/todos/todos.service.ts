@@ -14,7 +14,11 @@ export class TodosService {
   }
 
   async findAll() {
-    return await this.prisma.todo.findMany();
+    return await this.prisma.todo.findMany({
+      orderBy: {
+        title: 'asc',
+      },
+    });
   }
 
   async findOne(id: string) {

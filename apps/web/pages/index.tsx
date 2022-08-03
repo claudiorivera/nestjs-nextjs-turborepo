@@ -14,7 +14,9 @@ export default function Web() {
     await fetch("/api/todos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: `New todo ${Math.random()}` }),
+      body: JSON.stringify({
+        title: `Random todo #${(Math.random() * 1000).toFixed()}`,
+      }),
     });
     mutate();
   };
@@ -26,16 +28,37 @@ export default function Web() {
     mutate();
   };
 
+  const handleCompletedToggle = async (id: string, currentValue: boolean) => {
+    await fetch(`/api/todos/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ isCompleted: !currentValue }),
+    });
+    mutate();
+  };
+
   return (
     <div>
       <button onClick={handlePostNewTodo}>Create new random todo</button>
       <ul>
-        {data.map((todo: { id: string; title: string }) => (
-          <li key={todo.id}>
-            <p>{todo.title}</p>
-            <button onClick={() => handleDelete(todo.id)}>Delete</button>
-          </li>
-        ))}
+        {data.map(
+          (todo: { id: string; title: string; isCompleted: boolean }) => (
+            <li key={todo.id}>
+              <p>{todo.title}</p>
+              <label>
+                Completed?
+                <input
+                  type="checkbox"
+                  checked={todo.isCompleted}
+                  onChange={() => {
+                    handleCompletedToggle(todo.id, todo.isCompleted);
+                  }}
+                />
+              </label>
+              <button onClick={() => handleDelete(todo.id)}>Delete</button>
+            </li>
+          )
+        )}
       </ul>
     </div>
   );

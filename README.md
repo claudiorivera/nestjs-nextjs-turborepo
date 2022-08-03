@@ -12,3 +12,7 @@ This is a monorepo with a NestJS API and a Next.js frontend.
 ## Develop
 
 - `yarn dev`
+
+## Deploy
+
+- PRs will create preview apps automatically
