@@ -3,7 +3,7 @@ previewsEnabled: true
 services:
   - type: web
     name: api
-    branch: deploy-to-render
+    branch: main
     env: node
     buildCommand: yarn install && yarn prisma migrate deploy && yarn build:api
     startCommand: yarn start:api
@@ -18,7 +18,7 @@ services:
 
   - type: web
     name: web
-    branch: deploy-to-render
+    branch: main
     env: node
     buildCommand: yarn install && yarn build:web:prod
     startCommand: yarn start:web
