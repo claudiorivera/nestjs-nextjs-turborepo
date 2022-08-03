@@ -3,7 +3,7 @@ services:
     name: api
     branch: main
     env: node
-    buildCommand: yarn build:api
+    buildCommand: yarn global add turbo && yarn build:api
     startCommand: yarn start:api
     buildFilter:
       paths:
@@ -18,7 +18,7 @@ services:
     name: web
     branch: main
     env: node
-    buildCommand: yarn build:web
+    buildCommand: yarn global add turbo && yarn build:web
     startCommand: yarn start:web
     buildFilter:
       paths:
