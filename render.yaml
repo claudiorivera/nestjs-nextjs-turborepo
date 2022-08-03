@@ -18,7 +18,7 @@ services:
     name: web
     branch: deploy-to-render
     env: node
-    buildCommand: yarn install && yarn build:web
+    buildCommand: yarn install && yarn build:web:prod
     startCommand: yarn start:web
     buildFilter:
       paths:
