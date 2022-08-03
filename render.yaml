@@ -3,8 +3,8 @@ services:
     name: api
     branch: deploy-to-render
     env: node
-    buildCommand: yarn install && yarn build:api
-    startCommand: yarn prisma generate && yarn start:api
+    buildCommand: yarn install && yarn prisma migrate && yarn build:api
+    startCommand: yarn start:api
     buildFilter:
       paths:
         - api/**
