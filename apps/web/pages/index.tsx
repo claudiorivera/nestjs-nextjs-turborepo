@@ -29,12 +29,14 @@ export default function Web() {
   return (
     <div>
       <button onClick={handlePostNewTodo}>Create new random todo</button>
-      {data.map((todo: { id: string; title: string }) => (
-        <Fragment key={todo.id}>
-          <h1>{todo.title}</h1>
-          <button onClick={() => handleDelete(todo.id)}>Delete</button>
-        </Fragment>
-      ))}
+      <ul>
+        {data.map((todo: { id: string; title: string }) => (
+          <li key={todo.id}>
+            <p>{todo.title}</p>
+            <button onClick={() => handleDelete(todo.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
