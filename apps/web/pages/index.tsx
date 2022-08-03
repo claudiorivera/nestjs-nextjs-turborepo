@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
@@ -15,18 +16,25 @@ export default function Web() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: `New todo ${Math.random()}` }),
     });
+    mutate();
   };
+
+  const handleDelete = async (id: string) => {
+    await fetch(`/api/todos/${id}`, {
+      method: "DELETE",
+    });
+    mutate();
+  };
+
   return (
     <div>
-      <button
-        onClick={() => {
-          handlePostNewTodo();
-          mutate();
-        }}
-      >
-        Create new random todo
-      </button>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <button onClick={handlePostNewTodo}>Create new random todo</button>
+      {data.map((todo: { id: string; title: string }) => (
+        <Fragment key={todo.id}>
+          <h1>{todo.title}</h1>
+          <button onClick={() => handleDelete(todo.id)}>Delete</button>
+        </Fragment>
+      ))}
     </div>
   );
 }
