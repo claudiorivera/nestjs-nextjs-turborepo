@@ -1,7 +1,7 @@
 services:
   - type: web
     name: api
-    branch: main
+    branch: deploy-to-render
     env: node
     buildCommand: yarn install && yarn build:api
     startCommand: yarn prisma generate && yarn start:api
@@ -16,7 +16,7 @@ services:
 
   - type: web
     name: web
-    branch: main
+    branch: deploy-to-render
     env: node
     buildCommand: yarn install && yarn build:web
     startCommand: yarn start:web
