@@ -1,3 +1,5 @@
+previewsEnabled: true
+
 services:
   - type: web
     name: api
