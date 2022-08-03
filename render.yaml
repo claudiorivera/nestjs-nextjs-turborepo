@@ -4,7 +4,7 @@ services:
     branch: main
     env: node
     buildCommand: yarn install && yarn build:api
-    startCommand: yarn start:api
+    startCommand: yarn prisma generate && yarn start:api
     buildFilter:
       paths:
         - api/**
