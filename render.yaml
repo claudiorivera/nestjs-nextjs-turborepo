@@ -24,7 +24,7 @@ services:
       paths:
         - web/**
     envVars:
-      - key: API_URL
+      - key: API_RENDER_HOST
         fromService:
           type: web
           name: api
