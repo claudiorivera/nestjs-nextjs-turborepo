@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: api
+    branch: main
+    env: node
+    buildCommand: yarn build:api
+    startCommand: yarn start:api
+    buildFilter:
+      paths:
+        - api/**
+  - type: web
+    name: web
+    branch: main
+    env: node
+    buildCommand: yarn build:web
+    startCommand: yarn start:web
+    buildFilter:
+      paths:
+        - web/**
