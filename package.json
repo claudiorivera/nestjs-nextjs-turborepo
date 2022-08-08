@@ -13,7 +13,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "start:api": "yarn --cwd apps/api start",
+    "start:api": "yarn --cwd apps/api prisma migrate deploy && yarn --cwd apps/api start:prod",
     "start:web": "yarn --cwd apps/web start",
     "prisma:migrate:dev": "yarn --cwd apps/api prisma migrate dev",
     "prisma:migrate:deploy": "yarn --cwd apps/api prisma migrate deploy"
