@@ -10,7 +10,6 @@
     "build": "turbo run build",
     "build:api": "turbo run build --filter=api...",
     "build:web": "turbo run build --filter=web...",
-    "build:web:prod": "API_URL=https://${API_RENDER_HOST}.onrender.com turbo run build --filter=web...",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
